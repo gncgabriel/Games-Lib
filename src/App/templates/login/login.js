@@ -48,9 +48,7 @@ class login extends Component {
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="email" placeholder="Digite seu e-mail" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
-                                    <Form.Text className="text-muted">
-                                        Nunca divulgaremos seu e-mail
-                            </Form.Text>
+                                    
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicPassword">
