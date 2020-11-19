@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import login from '../templates/login/login';
 import cadastro from '../templates/login/cadastro';
+import home from '../templates/home/home';
+
+import logout from '../templates/login/logout';
 // import cadastro from '../templates/cadastro/cadastro';
 
 
@@ -25,7 +28,10 @@ class Routes extends Component {
         </Route>
 
         <Route exact path="/login" component={login} />
+        <Route exact path="/logout" component={logout} />
         <Route exact path="/cadastro" component={cadastro} />
+        <Route exact path="/home" component={home} />
+
       </Router>
     );
   }

@@ -1,11 +1,35 @@
 import React, { Component } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import NavigationBar from '../components/navbar';
+import { loginService } from '../../services/login/login';
+import * as Ladda from 'ladda';
 
 class login extends Component {
+    constructor() {
+        super();
+        this.state = {
+            email: "",
+            password: ""
+        }
+    }
 
     async login() {
+        var laddaBtn = Ladda.create( document.querySelector( '.ladda-btn' ) )
+        laddaBtn.start();
+        var data = this.state;
+        var response = new loginService().login(data);
+        response.then(res => {
+            laddaBtn.stop()
+            if(res.status === 200){
+                localStorage.setItem('isLoggedGameLib', true)
+                window.open('/home','_self')
+            }
+        })
 
+        response.catch(error => {
+            laddaBtn.stop()
+            alert(error.response.data[0].message);
+        })
     }
 
     render() {
@@ -23,7 +47,7 @@ class login extends Component {
                             <Form>
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Label>Email</Form.Label>
-                                    <Form.Control type="email" placeholder="Digite seu e-mail" />
+                                    <Form.Control type="email" placeholder="Digite seu e-mail" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
                                     <Form.Text className="text-muted">
                                         Nunca divulgaremos seu e-mail
                             </Form.Text>
@@ -31,11 +55,11 @@ class login extends Component {
 
                                 <Form.Group controlId="formBasicPassword">
                                     <Form.Label>Senha</Form.Label>
-                                    <Form.Control type="password" placeholder="Digite sua senha" />
+                                    <Form.Control type="password" placeholder="Digite sua senha" value={this.state.password} onChange={e => this.setState({ password: e.target.value })} />
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button className="ladda-btn" data-style="zoom-in" variant="primary" type="Button" onClick={() => this.login()}>
                                     Fazer Login
-                        </Button>
+                                </Button>
                             </Form>
                         </Col>
                     </Row>
