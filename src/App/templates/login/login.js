@@ -19,9 +19,11 @@ class login extends Component {
         var data = this.state;
         var response = new loginService().login(data);
         response.then(res => {
+            console.log(res)
             laddaBtn.stop()
             if(res.status === 200){
                 localStorage.setItem('isLoggedGameLib', true)
+                localStorage.setItem('tokenGameLib', res.data.token)
                 window.open('/home','_self')
             }
         })
