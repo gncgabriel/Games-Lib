@@ -5,7 +5,7 @@ import { util } from '../../services/util';
 import { gameService } from '../../services/user/games';
 
 
-class Home extends Component {
+class Lista extends Component {
 
     constructor() {
         super();
@@ -38,7 +38,7 @@ class Home extends Component {
 
         responseMyList.then(res => {
             this.setState({ myList: res.data.data })
-            console.log(this.state)
+
         })
     }
 
@@ -46,30 +46,21 @@ class Home extends Component {
         this.listarGames();
     }
 
-    adicionarALista(id) {
+    removerDaLista(id) {
         var myUtils = new util();
 
-        var data = { game_id: id, user_id: myUtils.getUserId() }
 
-        var response = new gameService().adicionarGame(data);
+
+        var response = new gameService().removerGame(id);
         response.then(res => {
-            if (res.status === 201) {
-                alert('Adicionado com sucesso')
-                window.location.reload();
-            }
+
+            alert('Removido com sucesso')
+            window.location.reload();
+
         })
     }
 
-    temNaLista(idGame) {
-        var tem = false;
-        this.state.myList.forEach((myGame) => {
-            if (myGame.game_id == idGame) {
-                tem = true;
 
-            }
-        })
-        return tem;
-    }
 
     render() {
 
@@ -84,20 +75,20 @@ class Home extends Component {
 
                             <Row className="justify-content-start">
                                 {
-                                    this.state.games.map((game) => {
-                                        if (this.temNaLista(game.id) === false) {
-                                            return <Card key={game.id} style={{ width: '320px', "marginBottom": "20px", marginLeft: "10px" }}>
-                                                <Card.Img variant="top" src={game.image} />
-                                                <Card.Body>
-                                                    <Card.Title>{game.name}</Card.Title>
-                                                    <Card.Text>
-                                                        {game.category}
-                                                    </Card.Text>
-                                                    <Button variant="success" onClick={() => this.adicionarALista(game.id)}>Adicionar à Lista</Button>
-                                                </Card.Body>
-                                            </Card>
-                                        }
-                                    })
+                                    this.state.myList.map((game) => (
+
+                                        <Card key={game.game.id} style={{ width: '300px', "marginBottom": "20px", marginLeft: "10px" }}>
+                                            <Card.Img variant="top" src={game.game.image} />
+                                            <Card.Body>
+                                                <Card.Title>{game.game.name}</Card.Title>
+                                                <Card.Text>
+                                                    {game.game.category}
+                                                </Card.Text>
+                                                <Button variant="danger" onClick={() => this.removerDaLista(game.id)}>Remover</Button>
+                                            </Card.Body>
+                                        </Card>
+
+                                    ))
                                 }
                             </Row>
                         </Col>
@@ -108,4 +99,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Lista;

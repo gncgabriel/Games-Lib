@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import login from '../templates/login/login';
 import cadastro from '../templates/login/cadastro';
 import home from '../templates/home/home';
-
+import lista from '../templates/user/lista';
 import admin from '../templates/admin/admin';
 
 // import cadastro from '../templates/cadastro/cadastro';
@@ -32,6 +32,8 @@ class Routes extends Component {
         <Route exact path="/cadastro" component={cadastro} />
         <Route exact path="/home" component={home} />
         <Route exact path="/admin" component={admin} />
+
+        <Route exact path="/lista" component={lista} />
 
       </Router>
     );

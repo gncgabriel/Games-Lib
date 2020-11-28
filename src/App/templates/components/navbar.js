@@ -37,7 +37,7 @@ class NavigationBar extends Component {
 
                 myNav = <Nav className="mr-auto">
                             <Nav.Link href="/home">Início</Nav.Link> ;
-                            <Nav.Link href="#">Minha Lista</Nav.Link>;
+                            <Nav.Link href="/lista">Minha Lista</Nav.Link>;
                         </Nav>
 
             }
