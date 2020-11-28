@@ -32,6 +32,7 @@ class NavigationBar extends Component {
                 myNav = "";
             } else {
                 myNav = <Nav.Link href="/home">Início</Nav.Link>;
+                myNav = <Nav.Link href="#">Minha Lista</Nav.Link>;
             }
 
         } else {
