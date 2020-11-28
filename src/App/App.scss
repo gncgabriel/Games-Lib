@@ -29,7 +29,7 @@
 }
 
 .container_game_form{
-    margin-top: 300px;
+    margin-top: 75px;
     background-color: rgb(248, 248, 248);
     box-shadow: 1px 1px 10px;
     min-height: 250px;
@@ -49,8 +49,8 @@
 }
 
 .img_preview{
-    width: 100px;
-    height: 100px;
+    width: 300px;
+    height: 150px;
     border: 1px solid rgb(117, 117, 117);
  
     margin-bottom: 10px;
@@ -62,5 +62,52 @@
         margin-top: 30px;
         margin-left: 120px;
         position: relative;
+    }
+}
+
+.listaJogos{
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    & .row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: rgb(252, 252, 252);
+        border-bottom: 1px solid rgb(110, 110, 110);
+        & div{
+            width: 25%;
+            display: flex;
+            justify-content: center;
+        }
+
+        & div.start{
+            width: 25%;
+            display: flex;
+            justify-content: start;
+        }
+
+        & div.end{
+            width: 25%;
+            display: flex;
+            justify-content: start;
+            padding-left: 50px;
+        }
+
+        & .img{
+            width: 100px;
+            height: 60px;
+            border-radius: 20px;
+        }
+
+        & .btn_controles{
+            & a{
+                margin-left: 15px;
+            }
+        }
     }
 }

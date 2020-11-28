@@ -30,14 +30,15 @@ class NavigationBar extends Component {
 
             if (myUtil.isAdm() === true) {
                 myNav = <Nav className="mr-auto">
-                
+                    <Nav.Link href="/admin">Início</Nav.Link> 
+                <Nav.Link href="/cadastrar">Cadastrar</Nav.Link>
             </Nav>
             } else {
 
 
                 myNav = <Nav className="mr-auto">
-                            <Nav.Link href="/home">Início</Nav.Link> ;
-                            <Nav.Link href="/lista">Minha Lista</Nav.Link>;
+                    <Nav.Link href="/home">Início</Nav.Link> 
+                            <Nav.Link href="/lista">Minha Lista</Nav.Link>
                         </Nav>
 
             }
