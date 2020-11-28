@@ -4,6 +4,9 @@ import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { util } from '../../services/util';
 import {adminService} from '../../services/admin/admin';
 
+import * as Ladda from 'ladda';
+
+
 class Admin extends Component {
 
     constructor() {
@@ -67,6 +70,8 @@ class Admin extends Component {
             if(res.status === 201){
                 alert('Jogo salvo com sucesso')
                 window.location.reload();
+            }else{
+                alert('Erro ao cadastrar Jogo')
             }
         })
 
@@ -85,7 +90,7 @@ class Admin extends Component {
                 <div className="title_banner">
                     <h1>Administrador</h1>
                 </div>
-                <Container className="container">
+                <Container className="container_game_form">
 
                     <Row className="justify-content-center">
                         <Col lg={12} className="mt-4">
