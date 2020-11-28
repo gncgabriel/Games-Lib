@@ -29,10 +29,17 @@ class NavigationBar extends Component {
             </NavDropdown>
 
             if (myUtil.isAdm() === true) {
-                myNav = "";
+                myNav = <Nav className="mr-auto">
+                
+            </Nav>
             } else {
-                myNav = <Nav.Link href="/home">Início</Nav.Link>;
-                myNav = <Nav.Link href="#">Minha Lista</Nav.Link>;
+
+
+                myNav = <Nav className="mr-auto">
+                            <Nav.Link href="/home">Início</Nav.Link> ;
+                            <Nav.Link href="#">Minha Lista</Nav.Link>;
+                        </Nav>
+
             }
 
         } else {
@@ -52,10 +59,8 @@ class NavigationBar extends Component {
                 <Navbar.Brand href="#home">Games Lib</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        {myNav}
 
-                    </Nav>
+                    {myNav}
                     <Nav>
                         {myNavDropDown}
                     </Nav>
