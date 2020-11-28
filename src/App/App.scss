@@ -1,0 +1,66 @@
+.banner_admin {
+    max-height: 300px;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    background-image: url("../App/assets/images/banner_admin.jpg");
+    background-repeat: no-repeat;
+    top: 56px;
+    background-size: cover;
+    z-index: -1;
+    filter: sepia(0.9);
+    filter: brightness(0.1);
+    transform: scale();
+    
+    
+}
+.title_banner{
+    max-height: 300px;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    color: rgba(255, 255, 255, 0.651);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.container{
+    margin-top: 300px;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 1px 1px 10px;
+    min-height: 250px;
+    margin-bottom: 30px;
+    
+    padding-bottom: 30px;
+}
+
+.linha_divisora{
+    height: 28em;
+    width: 1px;
+    border-right: 1px solid rgb(133, 133, 133);
+    @media (max-width: 920px){
+        display: none;
+    }
+
+}
+
+.img_preview{
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgb(117, 117, 117);
+ 
+    margin-bottom: 10px;
+    &:after{
+        content: 'Visualização da Imagem';
+        display: block;
+        width: 170px;
+        height: 100px;
+        margin-top: 30px;
+        margin-left: 120px;
+        position: relative;
+    }
+}

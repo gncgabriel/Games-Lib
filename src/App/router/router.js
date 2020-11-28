@@ -5,7 +5,8 @@ import login from '../templates/login/login';
 import cadastro from '../templates/login/cadastro';
 import home from '../templates/home/home';
 
-import logout from '../templates/login/logout';
+import admin from '../templates/admin/admin';
+
 // import cadastro from '../templates/cadastro/cadastro';
 
 
@@ -28,9 +29,9 @@ class Routes extends Component {
         </Route>
 
         <Route exact path="/login" component={login} />
-        <Route exact path="/logout" component={logout} />
         <Route exact path="/cadastro" component={cadastro} />
         <Route exact path="/home" component={home} />
+        <Route exact path="/admin" component={admin} />
 
       </Router>
     );

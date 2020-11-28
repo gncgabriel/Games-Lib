@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { util } from '../../services/util';
 
 class NavigationBar extends Component {
 
@@ -10,18 +11,28 @@ class NavigationBar extends Component {
         }
     }
 
+    logout() {
+        var myUtil = new util();
+        myUtil.logoff();
+    }
+
     render() {
 
+        var myUtil = new util();
         let myNavDropDown;
         let myNav;
 
-        if (this.state.isLogged == "true") {
+        if (myUtil.isLogged() === true) {
             myNavDropDown = <NavDropdown title="Acesso" id="basic-nav-dropdown" drop="left">
                 <NavDropdown.Header>Conta de Usuário</NavDropdown.Header>
-                <NavDropdown.Item href="/logout">Sair</NavDropdown.Item>   
+                <NavDropdown.Item href="#" onClick={() => this.logout()}>Sair</NavDropdown.Item>
             </NavDropdown>
 
-            myNav = <Nav.Link href="/home">Início</Nav.Link>;
+            if (myUtil.isAdm() === true) {
+                myNav = "";
+            } else {
+                myNav = <Nav.Link href="/home">Início</Nav.Link>;
+            }
 
         } else {
             myNavDropDown = <NavDropdown title="Acesso" id="basic-nav-dropdown" drop="left">
@@ -36,7 +47,7 @@ class NavigationBar extends Component {
         }
 
         return (
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="lg" className="fixed-top">
                 <Navbar.Brand href="#home">Games Lib</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

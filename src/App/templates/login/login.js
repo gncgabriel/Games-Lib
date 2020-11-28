@@ -14,17 +14,22 @@ class login extends Component {
     }
 
     async login() {
-        var laddaBtn = Ladda.create( document.querySelector( '.ladda-btn' ) )
+        var laddaBtn = Ladda.create(document.querySelector('.ladda-btn'))
         laddaBtn.start();
         var data = this.state;
         var response = new loginService().login(data);
         response.then(res => {
             console.log(res)
             laddaBtn.stop()
-            if(res.status === 200){
+            if (res.status === 200) {
                 localStorage.setItem('isLoggedGameLib', true)
-                localStorage.setItem('tokenGameLib', res.data.token)
-                window.open('/home','_self')
+                localStorage.setItem('gameLib', JSON.stringify(res.data))
+
+                if (res.data.type === "Adm") {
+                    window.open('/admin', '_self')
+                } else {
+                    window.open('/home', '_self')
+                }
             }
         })
 
@@ -50,7 +55,7 @@ class login extends Component {
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control type="email" placeholder="Digite seu e-mail" value={this.state.email} onChange={e => this.setState({ email: e.target.value })} />
-                                    
+
                                 </Form.Group>
 
                                 <Form.Group controlId="formBasicPassword">

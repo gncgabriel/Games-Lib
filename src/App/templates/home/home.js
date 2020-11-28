@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import NavigationBar from '../components/navbar';
+import { util } from '../../services/util';
 
 
 class Cadastro extends Component {
 
     constructor() {
         super();
-        
-        var isLoggedGameLib = localStorage.getItem("isLoggedGameLib");
-        
-        if(isLoggedGameLib != 'true'){
-            alert('Faça Login para continuar')
-            window.open('/login', '_self')
+        var myUtils = new util();
+
+        if (myUtils.isLogged() === false) {
+            alert('Faça login para acessar essa área');
+            myUtils.openHomePage();
         }
+
+        if (myUtils.isAdm() === true) {
+            myUtils.openHomePage();
+        }
+
     }
 
 
+
     render() {
-        
+
 
         return (
             <div>
@@ -31,7 +37,7 @@ class Cadastro extends Component {
                                     <h4>Bem Vindo</h4>
                                 </Col>
                             </Row>
-                            
+
                         </Col>
                     </Row>
                 </Container>

@@ -25,8 +25,9 @@ class Cadastro extends Component {
 
         var response = new loginService().cadastro(data);
         response.then(res => {
-            if(res.status == 201){
+            if(res.status === 201){
                 alert('Usuário cadastrado com sucesso')
+                window.location.reload();
             }
             laddaBtn.stop()
         })
