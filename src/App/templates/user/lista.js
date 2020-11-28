@@ -3,7 +3,7 @@ import { Container, Form, Button, Row, Col, Card } from 'react-bootstrap';
 import NavigationBar from '../components/navbar';
 import { util } from '../../services/util';
 import { gameService } from '../../services/user/games';
-
+import * as Ladda from 'ladda';
 
 class Lista extends Component {
 
@@ -27,10 +27,16 @@ class Lista extends Component {
     }
 
     listarGames() {
+        var laddaBtn = Ladda.create(document.querySelector('.ladda'))
+
+        laddaBtn.start();
+
+
         const response = new gameService().listarGames({});
 
         response.then(res => {
             this.setState({ games: res.data.data })
+            
 
         })
 
@@ -38,7 +44,8 @@ class Lista extends Component {
 
         responseMyList.then(res => {
             this.setState({ myList: res.data.data })
-
+            laddaBtn.stop()
+            document.getElementsByClassName("ladda")[0].classList.add("d-none")
         })
     }
 
@@ -71,9 +78,12 @@ class Lista extends Component {
                 <div className="p-0 m-0">
                     <div className="justify-content-around d-flex">
                         <Col lg={12} className="" style={{ marginTop: "65px" }}>
-
+                        <Button className="ladda" data-style="zoom-in"></Button>
 
                             <Row className="justify-content-start">
+                                <div className="ladda" data-style="zoom-in">
+
+                                </div>
                                 {
                                     this.state.myList.map((game) => (
 
